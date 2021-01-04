@@ -5,7 +5,7 @@ namespace Commander.Data
 {
     public class MockCommanderRepo : ICommanderRepo
     {
-        public IEnumerable<Command> GetAppCommands()
+        public IEnumerable<Command> GetAllCommands()
         {
             var commands=new List<Command>{
                 new Command { Id = 0, HowTo = "Boil an egg", Line = "Boil water", Platform = "Kettle&Pan" },
@@ -21,4 +21,5 @@ namespace Commander.Data
             return new Command { Id = 0, HowTo = "Boil an egg", Line = "Boil water", Platform = "Kettle&Pan" };
         }
     }
+
 }
