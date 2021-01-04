@@ -61,3 +61,5 @@ C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\bin\Debu
 C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\obj\Debug\netcoreapp3.1\Commander.csproj.CopyComplete
+C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\developer04\Desktop\Projects\RestApiLesJacksonCourse\Commander\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

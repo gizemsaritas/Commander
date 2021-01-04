@@ -1,7 +1,10 @@
+using System.ComponentModel.Design;
 using System.Collections.Generic;
 using Commander.Models;
 using Microsoft.AspNetCore.Mvc;
 using Commander.Data;
+using AutoMapper;
+using Commander.Dtos;
 
 namespace Commander.Controllers
 {
@@ -13,27 +16,43 @@ namespace Commander.Controllers
     {
         //private readonly MockCommanderRepo _repository=new MockCommanderRepo();
         private readonly ICommanderRepo _repository;
-        public CommandsController(ICommanderRepo repository)
+        private readonly IMapper _mapper;
+
+        public CommandsController(ICommanderRepo repository,IMapper mapper)
         {
             _repository= repository;
+            _mapper=mapper;
         }
         
         //GET api/commands
         [HttpGet]
-        public ActionResult<IEnumerable<Command>> GetAllCommands()
+        public ActionResult<IEnumerable<CommandReadDto>> GetAllCommands()
         {
             var commandItems=_repository.GetAllCommands();
-            return Ok(commandItems);
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(commandItems));
         }
         //GET api/commands/{id}
-        [HttpGet("{id}")]
-        public ActionResult<Command> GetCommandByID(int id)
+        [HttpGet("{id}",Name="GetCommandById")]
+        public ActionResult<CommandReadDto> GetCommandById(int id)
         {
             var commandItem=_repository.GetCommandById(id);
-            return Ok(commandItem);
+            if(commandItem!=null){
+                return Ok(_mapper.Map<CommandReadDto>(commandItem));
+            }
+            return NotFound();
         }
 
+        //POST api/IMenuCommandService     
+        [HttpPost]
+        public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto){
+            var commandModel=_mapper.Map<Command>(commandCreateDto);
+            _repository.CreateCommand(commandModel);
+            _repository.SaveChanges();
+            var commandReadDto=_mapper.Map<CommandReadDto>(commandModel);
+            
+            return Ok(commandReadDto);
 
-
+        }   
     }
+
 }
